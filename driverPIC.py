@@ -1,8 +1,8 @@
 from numpy import random
 import numpy as np
-import initial_distribution
+from initial_distribution import initial_distribution_from_file
 import AssembleRHS
-import 
+
 
 L = 100    # domain of solution 0 <= x <= L
 N = 20000  # number of electrons

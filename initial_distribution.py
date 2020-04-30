@@ -13,7 +13,7 @@ def initial_distribution(N,vb):
     return [r,v] 
 
 
-initial_distribution_from_file(rfname,vfname):
+def initial_distribution_from_file(rfname,vfname):
     r = np.loadtxt(rfname, delimiter='\n', unpack=True)
     v = np.loadtxt(vfname, delimiter='\n', unpack=True)
     return [r,v]
