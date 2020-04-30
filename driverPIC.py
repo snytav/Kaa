@@ -1,7 +1,7 @@
 from numpy import random
 import numpy as np
 from initial_distribution import initial_distribution_from_file
-import AssembleRHS
+from AssembleRHS import AssembleRHS
 
 
 L = 100    # domain of solution 0 <= x <= L
@@ -14,10 +14,11 @@ tmax = 80  # simulation run from t = 0 to t = tmax
 #initialize solution
 r,v = initial_distribution_from_file('r.txt','v.txt')
 
+t = 0.0
 #evolve solution
 while t<=tmax:
     # load r,v into a single vector
-    solution_coeffs = np.concatenate(r,v)
+    solution_coeffs = np.concatenate((r,v))
     
     # take a 4th order Runge-Kutta timestep
     k1 = AssembleRHS(solution_coeffs,L,J,N)

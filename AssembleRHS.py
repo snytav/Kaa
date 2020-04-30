@@ -1,7 +1,7 @@
 import numpy as np
 def AssembleRHS( solution_coeffs, L, J,N ):
-    r = solution_coeffs[0:N-1]    
-    v = solution_coeffs[N:2*N - 1]
+    r = solution_coeffs[0:N]    
+    v = solution_coeffs[N:2*N]
     r = r + L*(r<0) - L*(r>L)
     #  Calculate electron number density
     ne = GetDensity( r, L, J )
