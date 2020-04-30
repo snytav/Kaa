@@ -1,21 +1,18 @@
-am velocity
-dt = 0.1   # time-step (in inverse plasma frequencies)
-tmax = 80  # simulafrom numpy import random
+from numpy import random
 import numpy as np
-import double_maxwellian
+import initial_distribution
+import AssembleRHS
+import 
 
 L = 100    # domain of solution 0 <= x <= L
 N = 20000  # number of electrons
 J = 1000   # number of grid points
-vb = 3     # betion run from t = 0 to t = tmax
+vb = 3     # beam velocity
+dt = 0.1   # time-step (in inverse plasma frequencies)
+tmax = 80  # simulation run from t = 0 to t = tmax
 
 #initialize solution
-t = 0
-np.rng(42)                              # seed the rand generator
-r = L*random.uniform(0,1,N)             # electron positions
-#dlmwrite('r.txt',r,'delimiter','\t','precision','%25.15e');
-v = double_maxwellian(N,vb)             # electron velocities
-#dlmwrite('v.txt',v,'delimiter','\t','precision','%25.15e');
+r,v = initial_distribution_from_file('r.txt','v.txt')
 
 #evolve solution
 while t<=tmax:
@@ -35,7 +32,7 @@ while t<=tmax:
     r = r + L*(r<0) - L*(r>L)
     t = t + dt
     
-    detailed_output(t,dt,solution_coeffs,k1,k2,k3,k4);
-    phase_space(t,dt,r,v);
+#    detailed_output(t,dt,solution_coeffs,k1,k2,k3,k4);
+#    phase_space(t,dt,r,v);
    
 end
