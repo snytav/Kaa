@@ -8,6 +8,6 @@ def GetDensity( r, L, J ):
     js = np.floor(r/dx)
     ys = r/dx - (js)
     js_plus_1 = np.mod(js,J)+1
-#    n = npg.aggregate(js,(1-ys)/dx,[J,1]) + npg.aggregate(js_plus_1,ys/dx,[J,1])
+#      n = npg.aggregate(js,(1-ys)/dx,[J,1]) + npg.aggregate(js_plus_1,ys/dx,[J,1])
 
     return n
