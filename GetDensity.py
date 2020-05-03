@@ -14,8 +14,9 @@ def GetDensity( r, L, J ):
     js_plus_1 = np.mod(js,J)+1
     #return js_plus_1
     n1 = accum(js.astype(int),(1-ys)/dx)
+    np.savetxt('n1.txt', n1, delimiter='\n',fmt='%15.5e')
     n2 = accum(js_plus_1.astype(int),ys/dx)
-
+    np.savetxt('n2.txt', n2, delimiter='\n',fmt='%15.5e')
     n = n1 + n2
 
     return n
