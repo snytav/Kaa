@@ -1,4 +1,4 @@
-import accum
+from accum import accum
 import numpy as np
 def GetDensity( r, L, J ):
 # Evaluate number density n in grid of J cells, length   L, from the electron positions r
