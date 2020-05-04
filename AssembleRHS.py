@@ -1,5 +1,6 @@
 import numpy as np
 from GetDensity import GetDensity
+from Poisson1D import Poisson1D
 
 def AssembleRHS( solution_coeffs, L, J,N ):
     r = solution_coeffs[0:N]    
