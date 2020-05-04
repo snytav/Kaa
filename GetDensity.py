@@ -13,8 +13,8 @@ def GetDensity( r, L, J ):
     #return ys
     n1 =  ys
 
-    j = np.mod(js,J)+1
-    j = j + J*(j<0) - J*(j>J)
+    j = np.mod(js,J) + 1
+    j = j + J*(j<0) - J*(j>=J)
     js_plus_1 = j
 
 
