@@ -1,6 +1,7 @@
 import numpy as np
 from GetDensity import GetDensity
 from Poisson1D import Poisson1D
+from GetElectric import GetElectric
 
 def AssembleRHS( solution_coeffs, L, J,N ):
     r = solution_coeffs[0:N]    
@@ -16,9 +17,9 @@ def AssembleRHS( solution_coeffs, L, J,N ):
     E = GetElectric( phi, L )
     # equations of motion
     dx = L/J
-    js = floor(r/dx)+1
+    js = np.floor(r/dx)+1
     ys = r/dx - (js-1)
-    js_plus_1 = mod(js,J)+1
+    js_plus_1 = np.mod(js,J)+1
     Efield = E[js]*(1-ys) + E[js_plus_1]
     rdot = v
     vdot = -Efield

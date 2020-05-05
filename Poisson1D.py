@@ -5,14 +5,15 @@ def Poisson1D( v, L ):
     # using spectral method
     J = len(v)
     # Fourier transform source term
-    v_tilde = np.fft(v)
+    v_tilde = np.fft.fft(v)
     # vector of wave numbers
-    #k = (2*pi/L)*[0:(J/2-1) (-J/2):(-1)]
-   # k[0] = 1
+    k = (2*np.pi/L)*np.concatenate((np.linspace(0,J/2-1,J/2),np.linspace(-J/2,-1,J/2)))
+    k[0] = 1
     # Calculate Fourier transform of u
-    #u_tilde = -v_tilde./k.^2
+    u_tilde = np.divide(-v_tilde,np.power(k,2))
     # Inverse Fourier transform to obtain u
-    #u = real(np.ifft(u_tilde))
+    u = np.real(np.fft.ifft(u_tilde))
     # Specify arbitrary constant by forcing corner u = 0;
-    #u = u - u(1)
+    u = u - u[0]
+    return u
 
