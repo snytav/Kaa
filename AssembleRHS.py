@@ -17,10 +17,13 @@ def AssembleRHS( solution_coeffs, L, J,N ):
     E = GetElectric( phi, L )
     # equations of motion
     dx = L/J
-    js = np.floor(r/dx)+1
-    ys = r/dx - (js-1)
-    js_plus_1 = np.mod(js,J)+1
-    Efield = E[js]*(1-ys) + E[js_plus_1]
+    js = np.floor(r/dx)
+    ys = r/dx - (js)
+    j = np.mod(js, J) + 1
+    j = j + J * (j < 0) - J * (j >= J)
+    js_plus_1 = j
+    Efield = E[js.astype(int)]*(1-ys) + E[js_plus_1.astype(int)]
+    np.savetxt('ef.txt', Efield, delimiter='\n', fmt='%15.5e')
     rdot = v
     vdot = -Efield
     RHS = np.concatenate((rdot, vdot))
