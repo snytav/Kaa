@@ -22,7 +22,6 @@ while t<=tmax:
     
     # take a 4th order Runge-Kutta timestep
     k1 = AssembleRHS(solution_coeffs,L,J,N)
-    np.savetxt('k1.txt',k1, delimiter='\n', fmt='%25.15e')
     k2 = AssembleRHS(solution_coeffs + 0.5*dt*k1,L,J,N)
     k3 = AssembleRHS(solution_coeffs + 0.5*dt*k2,L,J,N)
     k4 = AssembleRHS(solution_coeffs + dt*k3,L,J,N)
@@ -35,6 +34,16 @@ while t<=tmax:
     t = t + dt
     
 #    detailed_output(t,dt,solution_coeffs,k1,k2,k3,k4);
+    fname = 'k1_' + str(t) + '.txt'
+    np.savetxt(fname, k1, delimiter='\n', fmt='%25.15e')
+    fname = 'k2_' + str(t) + '.txt'
+    np.savetxt(fname,k2, delimiter='\n', fmt='%25.15e')
+    fname = 'k3_' + str(t) + '.txt'
+    np.savetxt(fname,k3, delimiter='\n', fmt='%25.15e')
+    fname = 'k4_' + str(t) + '.txt'
+    np.savetxt(fname,k4, delimiter='\n', fmt='%25.15e')
+
+
 #    phase_space(t,dt,r,v);
    
 end
