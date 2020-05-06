@@ -2,6 +2,7 @@ from numpy import random
 import numpy as np
 from initial_distribution import initial_distribution_from_file
 from AssembleRHS import AssembleRHS
+from details import detailed_output
 
 
 L = 100      # domain of solution 0 <= x <= L
@@ -33,17 +34,10 @@ while t<=tmax:
     r = r + L*(r<0) - L*(r>L)
     t = t + dt
     
-#    detailed_output(t,dt,solution_coeffs,k1,k2,k3,k4);
-    fname = 'k1_' + str(t) + '.txt'
-    np.savetxt(fname, k1, delimiter='\n', fmt='%25.15e')
-    fname = 'k2_' + str(t) + '.txt'
-    np.savetxt(fname,k2, delimiter='\n', fmt='%25.15e')
-    fname = 'k3_' + str(t) + '.txt'
-    np.savetxt(fname,k3, delimiter='\n', fmt='%25.15e')
-    fname = 'k4_' + str(t) + '.txt'
-    np.savetxt(fname,k4, delimiter='\n', fmt='%25.15e')
+    detailed_output(t,k1,k2,k3,k4)
+
 
 
 #    phase_space(t,dt,r,v);
-   
-end
+
+
