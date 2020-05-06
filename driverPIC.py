@@ -3,6 +3,7 @@ import numpy as np
 from initial_distribution import initial_distribution_from_file
 from AssembleRHS import AssembleRHS
 from details import detailed_output
+from graphics import phase_space
 
 
 L = 100      # domain of solution 0 <= x <= L
@@ -38,6 +39,6 @@ while t<=tmax:
 
 
 
-#    phase_space(t,dt,r,v);
+    phase_space(t,dt,r,v);
 
 
