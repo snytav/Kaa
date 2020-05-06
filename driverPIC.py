@@ -22,6 +22,7 @@ while t<=tmax:
     
     # take a 4th order Runge-Kutta timestep
     k1 = AssembleRHS(solution_coeffs,L,J,N)
+    np.savetxt('k1.txt',k1, delimiter='\n', fmt='%25.15e')
     k2 = AssembleRHS(solution_coeffs + 0.5*dt*k1,L,J,N)
     k3 = AssembleRHS(solution_coeffs + 0.5*dt*k2,L,J,N)
     k4 = AssembleRHS(solution_coeffs + dt*k3,L,J,N)
